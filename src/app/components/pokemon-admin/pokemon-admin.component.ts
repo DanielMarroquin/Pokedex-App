@@ -15,20 +15,20 @@ export class PokemonAdminComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadDataTable()
+    // this.loadDataTable()
   }
 
-  loadDataTable() {
-    this.pokemonService.getListPokemon().subscribe({
-      next: (data: any) => {
-        this.pokemonList = data
-        console.log(this.pokemonList)
-      },
-      error: (err: any) => {
-        console.log(err)
-      }
-    })
-  }
+  // loadDataTable() {
+  //   this.pokemonService.getListPokemon().subscribe({
+  //     next: (data: any) => {
+  //       this.pokemonList = data
+  //       console.log(this.pokemonList)
+  //     },
+  //     error: (err: any) => {
+  //       console.log(err)
+  //     }
+  //   })
+  // }
 
   setFilter(row: any) {
     console.log(row)

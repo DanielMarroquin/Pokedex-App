@@ -1,14 +1,23 @@
-<mat-card class="border-apply border-5 margin-0 padding-0 mt-4">
-  <mat-card-content>
-    <div class="col-md-10 mg-5">
-      <div class="col-lg-10 ">
-        <div class="col-md-3 ">
-          <label for="exampleFormControlInput1" class="form-label">Listado de Pokemon</label>
+<section class="content">
+  <mat-card class="border-apply border-5 margin-0 padding-0 mt-4 mb-3">
+    <div class="plain-card">
+      <div class="card-inner">
+        <div class="col-md-4">
+<!--          <label for="exampleFormControlInput1" class="form-label">Listado de Pokemon</label>-->
           <input type="text" class="form-control" matInput (keyup)="setFilter($event)" #input
                  id="exampleFormControlInput1"
-                 placeholder="Busca por nombre">
+                 placeholder="Busca tu Pokemon por nombre">
         </div>
       </div>
     </div>
-  </mat-card-content>
-</mat-card>
+  </mat-card>
+
+  <mat-card class="border-apply border-5 margin-0 padding-0 mt-4">
+    <div class="col-auto p-3 d-flex justify-content-center">
+      <app-poke-table></app-poke-table>
+    </div>
+  </mat-card>
+
+</section>
+
+

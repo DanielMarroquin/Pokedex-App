@@ -11,12 +11,15 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {HttpClientModule} from "@angular/common/http";
 import { MatCardModule } from "@angular/material/card";
+import { PokeTableComponent } from './components/poke-table/poke-table.component';
+import { MatTableModule } from "@angular/material/table";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    PokemonAdminComponent
+    PokemonAdminComponent,
+    PokeTableComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,8 @@ import { MatCardModule } from "@angular/material/card";
     MatIconModule,
     MatButtonModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
