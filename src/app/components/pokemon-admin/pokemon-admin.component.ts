@@ -20,11 +20,11 @@ export class PokemonAdminComponent implements OnInit {
 
   loadDataTable() {
     this.pokemonService.getListPokemon().subscribe({
-      next: (data) => {
+      next: (data: any) => {
         this.pokemonList = data
         console.log(this.pokemonList)
       },
-      error: (err) => {
+      error: (err: any) => {
         console.log(err)
       }
     })
