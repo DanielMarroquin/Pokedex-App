@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import { PokemonService } from "../../services/pokemon.service";
 import { MatTableDataSource } from "@angular/material/table";
+
+let ColumnMode;
 
 @Component({
   selector: 'app-poke-table',
@@ -8,16 +10,27 @@ import { MatTableDataSource } from "@angular/material/table";
   styleUrls: ['./poke-table.component.scss']
 })
 export class PokeTableComponent implements OnInit {
+  // @ts-ignore
+  @ViewChild('editTmpl', { static: true }) editTmpl: TemplateRef<any>;
+  // @ts-ignore
+  @ViewChild('hdrTpl', { static: true }) hdrTpl: TemplateRef<any>;
+  data = [];
+  columns = [];
+
+  // ColumnMode = ColumnMode;
 
   pokemonList = [];
   displayedColumns: string[] = ['position', 'image', 'name'];
-  data: any[] = [];
   dataSource = new MatTableDataSource<any>(this.data);
   constructor(
     private pokemonService: PokemonService
   ) { }
 
   ngOnInit(): void {
+    this.columns =  [
+
+    ]
+
     this.loadDataTable();
   }
 
@@ -28,9 +41,7 @@ export class PokeTableComponent implements OnInit {
     this.pokemonService.getListPokemon().subscribe({
       next: (data: any) => {
         this.pokemonList = data
-        this.data.push(pokemonData)
         this.dataSource = new MatTableDataSource<any>(this.data);
-        console.log(this.pokemonList)
       },
       error: (err: any) => {
         console.log(err)
