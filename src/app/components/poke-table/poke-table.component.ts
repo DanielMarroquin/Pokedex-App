@@ -1,6 +1,7 @@
 import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import { PokemonService } from "../../services/pokemon.service";
 import { MatTableDataSource } from "@angular/material/table";
+import Swal from 'sweetalert2'
 
 let ColumnMode;
 
@@ -21,7 +22,6 @@ export class PokeTableComponent implements OnInit {
   // ColumnMode = ColumnMode;
 
   pokemonList = [];
-  displayedColumns: string[] = ['position', 'image', 'name'];
   dataSource = new MatTableDataSource<any>(this.data);
   constructor(
     private pokemonService: PokemonService
@@ -35,8 +35,29 @@ export class PokeTableComponent implements OnInit {
     console.log(row)
   }
 
-  deletePokemon(row: any) {
-    console.log(row)
+
+  deletePokemon(row: any){
+    console.log(row, 'row')
+    Swal.fire({
+      title: '¿Desea eliminar el Pokemon?',
+      text: "",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: "Si",
+      cancelButtonText:'No, Gracias'
+    }).then((value:any) => {
+      if(value.isConfirmed){
+        this.pokemonService.deletePokemon({id: row.id }).subscribe({
+          next: ()=> {
+            console.log(row.id, 'id')
+            this.loadDataTable();
+          },
+          error: err =>{
+            console.log(err, 'Error al cargar los datos')
+          }
+        })
+      }
+    })
   }
 
 
@@ -49,9 +70,10 @@ export class PokeTableComponent implements OnInit {
         this.dataSource = new MatTableDataSource<any>(this.data);
       },
       error: (err: any) => {
-        console.log(err)
+        console.log(err, 'Error al cargar los datos')
       }
     })
   }
+
 
 }

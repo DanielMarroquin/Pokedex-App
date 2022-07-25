@@ -24,7 +24,7 @@
     <mat-label>Ingrese Defensa</mat-label>
     <input matInput type="number" placeholder="Ingrese primer valor">
   </mat-form-field>
-  <div class="modal-footer align-items-center">
+  <div mat-dialog-action [align]="'end'" >
     <button type="submit" class="btn btn-primary">Guardar</button>
     <button mat-button [mat-dialog-close]="true"><mat-icon>close</mat-icon>Cerrar</button>
   </div>
