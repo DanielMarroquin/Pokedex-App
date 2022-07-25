@@ -1,0 +1,32 @@
+<h1 mat-dialog-title class="text-center">Añadir Nuevo Pokemon</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Nombre Pokemon</mat-label>
+    <input matInput placeholder="Nombre">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Tipo Pokemon</mat-label>
+    <mat-select placeholder="Tipo">
+      <mat-option value="Agua">Agua</mat-option>
+      <mat-option value="Fuego">Fuego</mat-option>
+      <mat-option value="Planta">Planta</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Imagen</mat-label>
+    <input matInput placeholder="Imagen">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Ingrese Ataque</mat-label>
+    <input matInput type="number" placeholder="Ingrese primer valor">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Ingrese Defensa</mat-label>
+    <input matInput type="number" placeholder="Ingrese primer valor">
+  </mat-form-field>
+  <div class="modal-footer align-items-center">
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button mat-button [mat-dialog-close]="true"><mat-icon>close</mat-icon>Cerrar</button>
+  </div>
+</div>
+

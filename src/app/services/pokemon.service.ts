@@ -12,7 +12,7 @@ export class PokemonService {
     private http:HttpClient
   ) { }
 
-  getListPokemon(id: number = 3): Observable<any>{
+  getListPokemon(id: number = 2): Observable<any>{
     const params = {
       idAuthor: id
     }

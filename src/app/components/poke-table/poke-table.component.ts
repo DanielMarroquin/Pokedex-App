@@ -15,6 +15,7 @@ export class PokeTableComponent implements OnInit {
   // @ts-ignore
   @ViewChild('hdrTpl', { static: true }) hdrTpl: TemplateRef<any>;
   data = [];
+  rows = [];
   columns = [];
 
   // ColumnMode = ColumnMode;
@@ -27,20 +28,24 @@ export class PokeTableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.columns =  [
-
-    ]
-
     this.loadDataTable();
+  }
+
+  editPokemon(row: any) {
+    console.log(row)
+  }
+
+  deletePokemon(row: any) {
+    console.log(row)
   }
 
 
 
   loadDataTable() {
-    let pokemonData: any;
     this.pokemonService.getListPokemon().subscribe({
       next: (data: any) => {
         this.pokemonList = data
+        this.rows = data
         this.dataSource = new MatTableDataSource<any>(this.data);
       },
       error: (err: any) => {

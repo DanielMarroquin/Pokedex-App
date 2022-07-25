@@ -8,27 +8,15 @@ import { PokemonService } from "../../services/pokemon.service";
 })
 export class PokemonAdminComponent implements OnInit {
 
-  pokemonList = [];
 
   constructor(
     private pokemonService: PokemonService
   ) { }
 
   ngOnInit(): void {
-    // this.loadDataTable()
+
   }
 
-  // loadDataTable() {
-  //   this.pokemonService.getListPokemon().subscribe({
-  //     next: (data: any) => {
-  //       this.pokemonList = data
-  //       console.log(this.pokemonList)
-  //     },
-  //     error: (err: any) => {
-  //       console.log(err)
-  //     }
-  //   })
-  // }
 
   setFilter(row: any) {
     console.log(row)

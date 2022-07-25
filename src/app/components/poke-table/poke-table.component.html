@@ -1,28 +1,36 @@
-<div>
-  <h3>
-    TemplateRef via Column Property
-    <small>
-      <a
-        href="https://github.com/swimlane/ngx-datatable/blob/master/src/app/templates/template-obj.component.ts"
-        target="_blank"
-      >
-        Source
-      </a>
-    </small>
-  </h3>
+<mat-card-content>
   <ngx-datatable
-    class="material"
-    [rows]="rows"
+    style="width: 100%"
     [columns]="columns"
-    [columnMode]="ColumnMode.force"
+    [columnMode]="'standard'"
     [headerHeight]="50"
     [footerHeight]="50"
     rowHeight="auto"
-  >
+    [limit]="10"
+    [rows]="rows"
+    class="material">
+    <ngx-datatable-column name="Actions">
+      <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+        <button mat-icon-button color="accent" title="Editar" (click)="editPokemon(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button class="text-success" title="Eliminar" (click)="deletePokemon(row)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Name" prop="name">
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Image" prop="image">
+      <ng-template mat-cell>
+<!--        <img alt="test" width="100" height="100">-->
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Type" prop="type">
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Attack" prop="attack">
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Defense" prop="defense">
+    </ngx-datatable-column>
   </ngx-datatable>
-  <ng-template #hdrTpl let-column="column"><strong>Fancy</strong>: {{ column.name }} !!</ng-template>
-  <ng-template #editTmpl let-row="row" let-value="value">
-    <img *ngIf="value === 'male'" width="150" src="https://media.giphy.com/media/I8nepxWwlEuqI/giphy.gif"/>
-    <img *ngIf="value === 'female'" width="150" src="https://media.giphy.com/media/sxSVG3XHf7yww/giphy.gif"/>
-  </ng-template>
-</div>
+</mat-card-content>
